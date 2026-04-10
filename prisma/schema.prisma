@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum EstadoPedido {
+  pendiente
+  confirmado
+  enviado
+}
+
+model Jacket {
+  id          String   @id @default(cuid())
+  nombre      String
+  descripcion String
+  precio      Decimal  @db.Decimal(10, 2)
+  imagenUrl   String
+  activo      Boolean  @default(true)
+  creadoEn    DateTime @default(now())
+  pedidos     Pedido[]
+}
+
+model FinishedJacket {
+  id          String   @id @default(cuid())
+  nombre      String
+  descripcion String
+  imagenUrl   String
+  activo      Boolean  @default(true)
+  creadoEn    DateTime @default(now())
+}
+
+model Pedido {
+  id               String       @id @default(cuid())
+  clienteNombre    String
+  clienteEmail     String
+  jacketId         String
+  imagenDisenioUrl String
+  precioChaqueta   Decimal      @db.Decimal(10, 2)
+  precioDisenio    Decimal      @default(40) @db.Decimal(10, 2)
+  total            Decimal      @db.Decimal(10, 2)
+  estado           EstadoPedido @default(pendiente)
+  creadoEn         DateTime     @default(now())
+  jacket           Jacket       @relation(fields: [jacketId], references: [id], onDelete: Restrict)
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+}
