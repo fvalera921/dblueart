@@ -73,8 +73,8 @@ export default function HomePage() {
             },
             {
               icon: ShieldCheck,
-              title: "2. Ajusta tu diseño",
-              description: "Sube tu imagen y colócala sobre la prenda con arrastre, escala y rotación."
+              title: "2. Sube tu diseño",
+              description: "Sube la imagen que quieres aplicar y la recibimos lista para preparar tu encargo."
             },
             {
               icon: Send,
@@ -111,7 +111,7 @@ export default function HomePage() {
                 <Mail className="h-4 w-4 text-sky" />
                 hola@dblueart.com
               </p>
-              <p>Madrid, España</p>
+              <p>Bullas, Murcia</p>
             </div>
           </div>
           <div>
@@ -119,7 +119,7 @@ export default function HomePage() {
             <div className="mt-3 space-y-2 text-sm text-mist/72">
               <p>Moda personalizada, chaquetas pintadas y diseño textil exclusivo.</p>
               <a
-                href="https://instagram.com/dblueart"
+                href="https://www.instagram.com/dblueart"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 text-sky"
